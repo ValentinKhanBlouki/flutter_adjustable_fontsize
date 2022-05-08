@@ -1,12 +1,11 @@
 # Adjustable Fontsize (Example App)
 
-This [Flutter](https://flutter.dev/) project provides an example implementation of a feature that allows users to change the fontsize.
+This [Flutter](https://flutter.dev/) example app shows how users could conveniently adjust an app's fontsize. <br>
+This might help people with visual impairment to use the app. <br>
+Feel free to reuse and modify the code.
 
 ![App on iPhone](documentation_assets/demo.gif)
 
-This might help people with visual impairment to use the app.
-
-Feel free to reuse and modify the code.
 
 <br>
 
@@ -69,10 +68,13 @@ The **FontSizeControl** class has two attributes that can be referenced by widge
 
 Methods that change these attributes, have to call the **notifyListeners()**-method, to make the listening widgets rebuild, e.g.:
 ```dart
-void main() => runApp(MultiProvider(providers: [
-      ChangeNotifierProvider(create: (context) => FontSizeControl()),
-      // Add more providers here.
-    ], child: const FontsizeExampleApp()));
+enlarge() {
+    if (fontSizeFactor < 2) {
+      fontSizeFactor += 0.1;
+      headerSizeFactor += 0.05;
+    }
+    notifyListeners(); // <-- make listening widgets rebuild
+  }
 ```
 
 
